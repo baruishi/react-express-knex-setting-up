@@ -1,26 +1,37 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import { tsConstructorType } from '@babel/types';
+import axios from "axios";
 
-function App() {
-  return (
-    <div className="App">
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      people: {},
+    };
+  }
+
+    async componentDidMount() {
+      //let { data: people} = await axios.get('/api/people');
+      fetch('api/people')
+        .then(res => this.setState({people: res}));
+      //this.setState( {people: people});
+    }
+
+    
+    render() {
+    return (
+      <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+      Setting-up1
+      baruishi 
+      {console.log(this.state)}
+      
       </header>
-    </div>
-  );
-}
-
-export default App;
+      </div>
+      );
+    }
+    
+  }
+    export default App;
+    
